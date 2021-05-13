@@ -14,7 +14,7 @@ Guide
 1. Download this repository
 2. Optional: Create a new SSH Key
     - Navigate to your .ssh folder
-    - Run command: ssh-keygen -t rsa -b 2048 -f Vagrant
+    - Run command: ssh-keygen -t rsa -b 2048 -f vagrant
     - You will need to uncomment the file provision statement in the Vagrant File to copy they public key to the VM
 3. Navigate to the root of the "Vagrant" folder and review Vagrant file. 
     - Command: more VagrantFile
