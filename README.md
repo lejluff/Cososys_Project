@@ -1,7 +1,7 @@
 # Cososys_Project
 
 # 1. Vagrant Box Details
-* Ubuntu trusty x64 with LAMP
+* Ubuntu trusty x64
 * Apache2 (Ubuntu)
 * PHP 5 (Ubuntu)
 * MySQL Server 5 (Ubuntu)
