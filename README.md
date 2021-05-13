@@ -1,6 +1,6 @@
 # Cososys_Project
 
-Vagrant Box Details
+# 1. Vagrant Box Details
 * Ubuntu trusty x64 with LAMP
 * Apache2 (Ubuntu)
 * PHP 5 (Ubuntu)
@@ -16,7 +16,7 @@ Guide
     - Navigate to your .ssh folder
     - Run command: ssh-keygen -t rsa -b 2048 -f Vagrant
     - You will need to uncomment the file provision statement in the Vagrant File to copy they public key to the VM
-3. Navigate to the root folder and review Vagrant file. 
+3. Navigate to the root of the "Vagrant" folder and review Vagrant file. 
     - Command: more VagrantFile
 4. Optional: Apply SSH changes 
 5. Command: vagrant up
@@ -24,5 +24,13 @@ Guide
 This will create a local ubuntu virtual box with Apache, PHP & MySQL. It will clone a seperate repository to retrieve a simple html file to be used by the web server.
 
 Web Page: http://localhost:8080/
+
+# 2. Cloud Formation
+
+This is a simple template to launch an EC2 instance. This instance is within a subnet inside a VPC with a Gateway attached.
+
+This template is also available for use from this S3 bucket: https://cososys-cf-template.s3.eu-west-2.amazonaws.com/vpc.yaml
+
+
 
 
