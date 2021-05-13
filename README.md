@@ -31,6 +31,12 @@ This is a simple template to launch an EC2 instance. This instance is within a s
 
 This template is also available for use from this S3 bucket: https://cososys-cf-template.s3.eu-west-2.amazonaws.com/vpc.yaml
 
+Guide
+1. This stack can be launched using the GUI and pointing to the yaml file in the S3 bucket
+2. This stack can be launched through the CLI
+    - aws configure to setup environment
+    - Command: aws cloudformation create-stack --stack-name Cososys --template-url https://cososys-cf-template.s3.eu-west-2.amazonaws.com/vpc.yaml --parameters ParameterKey=RigName,ParameterValue=TestRig
+
 
 
 
