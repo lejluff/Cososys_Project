@@ -1,0 +1,36 @@
+Vagrant.configure("2") do |config|
+  
+  # VM Config
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "Cososys_VM"
+    vb.memory = "2048"
+    vb.cpus = "2"
+  end
+
+  # Set the image and ports it needs to use
+  config.vm.define :cososys do |inv_config|
+    inv_config.vm.box = "ubuntu/trusty64"
+    inv_config.vm.box_url = "https://app.vagrantup.com/ubuntu/boxes/trusty64"
+    inv_config.vm.network "forwarded_port", guest: 80, host: 8080
+    inv_config.vm.network "forwarded_port", guest: 3306, host: 8889
+
+    # Optional: If you follow the instructions in the readme to generate a ssh keypair then you update he name of the .pub file and can uncomment the below to use your own credentials in an SSH session
+    #inv_config.vm.provision "file", source: "~\\.ssh\\vagrant.pub", destination: "~/.ssh/authorized_keys"
+
+    # Copy the artifact necessary to deploy the file needed for the web server
+    inv_config.vm.provision "file", source: "scripts/GitPull.sh", destination: "/tmp/GitPull.sh"
+
+    # Enable the Puppet provisioner, with will look in manifests
+    inv_config.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file = "default.pp"
+      puppet.module_path = "modules"
+    end
+
+    # Deploy file to web server
+    inv_config.vm.provision "shell", inline: <<-SHELL
+    sudo bash /tmp/GitPull.sh
+    SHELL
+
+  end 
+end

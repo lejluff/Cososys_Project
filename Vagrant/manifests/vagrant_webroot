@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+  ServerName cososys
+  DocumentRoot /var/www
+  <Directory /var/www>
+    DirectoryIndex index.html
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
